@@ -40,7 +40,7 @@ function Pokemons(){
     }
 
     const nextPage = () => {
-        if(currentPage<150)
+        if(pokemons.filter( pokemon => pokemon.name.includes(query)).length > currentPage + 10)
             setCurrentPage(currentPage + 10);
     }
 
