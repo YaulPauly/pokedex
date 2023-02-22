@@ -32,24 +32,22 @@ function Pokemon(){
                 <img className={styles.pokeballImg} src={PokeballImg} alt="Pokeball" /> {" "}
                 Go Back
             </button>
-
-                <div className={styles.pokemon}>
-                    <main className={styles.pokemonInfo}>
-                        <div className={styles.pokemonTitle}>{skills.name}</div>
-                        <div>Nr. {skills.id}</div>
-                        <div>
-                            <img 
-                                className={styles.pokemonInfoImg}
-                                src={skills.imgSrc}
-                                alt={skills.name} 
-                            />
-                        </div>
-                        <div>HP: {skills.hp}</div>
-                        <div>Attack: {skills.attack}</div>
-                        <div>Defense: {skills.defense}</div>                    
-                    </main>
-                </div>
-
+            <div className={styles.pokemon}>
+                <main className={styles.pokemonInfo}>
+                    <div className={styles.pokemonTitle}>{skills.name}</div>
+                    <div>Nr. {skills.id}</div>
+                    <div>
+                        <img 
+                            className={styles.pokemonInfoImg}
+                            src={skills.imgSrc}
+                            alt={skills.name} 
+                        />
+                    </div>
+                    <div>HP: {skills.hp}</div>
+                    <div>Attack: {skills.attack}</div>
+                    <div>Defense: {skills.defense}</div>                    
+                </main>
+            </div>
             <Footer />
         </>
     )

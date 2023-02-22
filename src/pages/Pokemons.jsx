@@ -10,6 +10,7 @@ function Pokemons(){
     const [isLoanding, setIsLoading] = useState(false);
     const [query, setQuery] = useState("");
     const [pokemons, setPokemons] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0)
 
     useEffect(() => {
         const fetchAllPokemons = async () => {
@@ -22,20 +23,50 @@ function Pokemons(){
         fetchAllPokemons();
     },[])
 
+    useEffect(() => {
+        setCurrentPage(0); 
+    }, [query]);
+
     if(isLoanding || !pokemons) {
         return <LoadingScreen/>
     }
 
-    const filteredPokemons = pokemons?.slice(0, 151).filter(pokemon => {
-        return pokemon.name.toLowerCase().match(query.toLowerCase());
-    });
+
+    const filteredPokemons = () => {
+        if(query.length === 0)
+            return pokemons.slice(currentPage, currentPage +10)
+        const filtered = pokemons.filter( pokemon => pokemon.name.includes(query))
+        return filtered.slice(currentPage, currentPage+10)
+    }
+
+    const nextPage = () => {
+        if(currentPage<150)
+            setCurrentPage(currentPage + 10);
+    }
+
+    const prevPage = () => {
+        if(currentPage > 0)
+            setCurrentPage(currentPage -10);
+    }
 
     return (
         <>
             <Header query={query} setQuery={setQuery}/>
+            <div className={styles.pagination}>
+                <button
+                    onClick={prevPage}
+                    className={styles.paginationButton}>
+                    Anterior
+                </button>
+                <button 
+                    onClick={nextPage}
+                    className={styles.paginationButton}>
+                    Siguiente
+                </button>
+            </div>
             <main>
                 <nav className={styles.nav}>
-                    {filteredPokemons?.slice(0,151).map(pokemon => (
+                    {filteredPokemons().map(pokemon => (
                         <Link key={pokemon.id} className={styles.listItem} to={`/pokemons/${pokemon.name.toLowerCase()}`}>
                             <img 
                                 className={styles.listItemIcon}

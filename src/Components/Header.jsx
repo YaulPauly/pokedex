@@ -1,7 +1,7 @@
 import styles from "./header.module.css"
 
 function Header({query, setQuery}){
-
+    
     return (
         <header className={styles.header}>
             <input 

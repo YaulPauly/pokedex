@@ -46,3 +46,19 @@
     font-size: 0.8rem;
     display: block;
 }
+
+.pagination {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid #e4e4e4;
+    margin: 10px 20px;  
+}
+
+.paginationButton {
+    margin: 10px ;
+    background: var(--bg-gradient);
+    height: 50px;
+    width: 100px;
+}
